@@ -103,12 +103,6 @@
 
 ---
 
-## 📄 Лицензия
-
-Основан на [SkyOffice](https://github.com/kevinshen56714/SkyOffice) (ISC License)
-
----
-
 ## 📧 Контакты
 
 **Связаться с разработчиком:** [jaisonwilson@yandex.ru](mailto:jaisonwilson@yandex.ru)
