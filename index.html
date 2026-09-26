@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MyOfficeGame — Виртуальный офис</title>
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Bh0i3cvhcAHPj7YjQV0D9bxou218lW90vsIbfVEw3edEqxvKIBeTyiCPTLwI-ZomfUzywNE0IwQNjlsY_9iDEKOko-DnU9sYxGEG6CUW2SFjlc78Sm1iaQDJCGWf1nT2AVz1xfou9iKcCMJAMdXk7wJCLerxSfxJ2a8DgRl5gZkNi9260ewW5h5pzKjYAcFcjC1gdY47Y5UXmq-PgtaAh7N8kLHQKOPNC-oaUwI4Xu1OUYeU4AMWWMUWVdEPJ9z_JH-El2iCBEb0QIbAb5PG3ppsTn1p-M-kEtUWSdWMDgtqc3Bi_Pdr170HGcyK0HNM-5Qwisg_Pb0qjQeMg-FE7dQZV8gXstBztNLVhtvS_HwHgFigGWD_Mncwx07uEm3hJ2MXL7rEEZ3HzkOEVv0ppUSPsaazzsOnct2oQFpIgF2Mc63jESraRPry-BftWmm9oUwCjPUxllui5aXIILiC-GSYzPiBdLLp5JXR0gyvbkdgRZ0Q90yrq-fslynh-mrV8APCkngAtFGTZRGlea-UCOi6w3Dix2XSJsB3Y5ATZX5tAjzDDGVG6-7GmEeIgC1_VBKPeVUi22AefCEAQp1dDYGvCl3o2KcnHxgX4gNBY7Vx0oSj4ZR0c5dxIOPQog5bjoGUo8MyX9ZlwgFzcWP8VA5HILO_7v-QTVVKoQhb7PHJPWQ5JJ2bPztdiXL2TCcOVpD3WerAoicr1vuxZuE9CCnWXYBUzEBshDz2CpNYhU6g5qITmbPIaGclxrcdPH_UMoLUeEH399iZ38sJ4jqoA7XPwVz7c7mAVhA7RKzHBlE5clZx-Wt1yFstW--M71dao67RPFcvBC8mCVA87twDqsPMEfJaDUK5RP0-jRCEVYz3uhv0UZNeML9IKVs2r0mXVc9yLA0EZyYthD4pg_A58Q" charset="UTF-8"></script><style>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -12,6 +12,16 @@
       background: #0f1117;
       color: #e0e0e0;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Предотвращаем автоскролл при загрузке */
+    html:not(.loaded) {
+      scroll-behavior: auto;
     }
 
     /* HERO */
@@ -38,6 +48,8 @@
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .badge {
@@ -50,6 +62,8 @@
       font-size: 13px;
       margin-bottom: 24px;
       letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -59,8 +73,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      color: transparent;
       margin-bottom: 20px;
       letter-spacing: -2px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero p {
@@ -68,6 +85,8 @@
       color: #8899aa;
       max-width: 560px;
       margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
     }
 
     .btn-group {
@@ -75,6 +94,8 @@
       gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      position: relative;
+      z-index: 1;
     }
 
     .btn {
@@ -86,6 +107,11 @@
       cursor: pointer;
       border: none;
       transition: all 0.2s;
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-primary {
@@ -238,6 +264,9 @@
       white-space: nowrap;
       min-width: 48px;
       text-align: center;
+      -webkit-text-fill-color: #4a90d9;
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
     }
 
     .control-item span:last-child {
@@ -576,6 +605,30 @@
   <footer style="border-top: 1px solid rgba(255,255,255,0.06); padding: 20px; text-align: center; color: #445566; font-size: 14px;">
     © 2024 MyOfficeGame
   </footer>
+
+  <script>
+    // Сбрасываем скролл при загрузке страницы
+    (function() {
+      // Принудительно скроллим наверх сразу
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
+      // Если есть хэш в URL, удаляем его
+      if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+      
+      // После загрузки включаем плавный скролл
+      window.addEventListener('load', () => {
+        document.documentElement.classList.add('loaded');
+      });
+    })();
+  </script>
 
 </body>
 </html>
