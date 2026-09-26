@@ -8,8 +8,8 @@
 
 Работай и общайся в 2D пространстве вместе с командой. Видеосвязь, доски, файлы — всё в одном месте.
 
-[![Играть сейчас](https://img.shields.io/badge/🎮_Играть-сейчас-4a90d9?style=for-the-badge)](https://myofficegame.duckdns.org)
-[![Сайт](https://img.shields.io/badge/🌐_Сайт-проекта-4a90d9?style=for-the-badge)](https://rkosobokov.github.io/MyOfficeGame/)
+[![Играть сейчас](https://img.shields.io/badge/🎮_Играть-сейчас-4a90d9?style=for-the-badge)](https://game.myofficegame.ru)
+[![Сайт](https://img.shields.io/badge/🌐_Сайт-проекта-4a90d9?style=for-the-badge)](https://myofficegame.ru/)
 [![Поддержать](https://img.shields.io/badge/❤️_Поддержать-проект-ffd200?style=for-the-badge)](https://www.donationalerts.com/r/jaisonwilson)
 
 </div>
@@ -158,6 +158,6 @@
 
 **Сделано с ❤️ для удалённых команд**
 
-[🎮 Играть](https://myofficegame.duckdns.org) • [🌐 Сайт](https://rkosobokov.github.io/MyOfficeGame/) • [❤️ Поддержать](https://www.donationalerts.com/r/jaisonwilson)
+[🎮 Играть](https://game.myofficegame.ru) • [🌐 Сайт](https://myofficegame.ru/) • [❤️ Поддержать](https://www.donationalerts.com/r/jaisonwilson)
 
 </div>
